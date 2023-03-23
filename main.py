@@ -2,6 +2,7 @@ import os
 import cv2
 import glob
 import json
+from tqdm import tqdm
 import argparse
 
 
@@ -43,7 +44,7 @@ def generate_split(output_file, data_path, annotation_files):
     """
     images = []
     annotations = []
-    for annotation_file in annotation_files:
+    for annotation_file in tqdm(annotation_files):
         with open(annotation_file, "r") as f:
             ann_dict = json.load(f)
 

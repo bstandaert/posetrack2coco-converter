@@ -69,6 +69,10 @@ def generate_split(output_file, data_path, annotation_files):
                 sum(ann_annotation["keypoints"][2::3])
             )
             ann_annotation["scores"] = []
+            ann_annotation["segmentation"] = []
+            if "bbox" in ann_annotation:
+                bbox_w, bbow_h = ann_annotation["bbox"][2:]
+                ann_annotation["area"] = bbox_w * bbow_h
             #if "person_id" in ann_annotation:  # check if needed ?
             #    ann_annotation.pop("person_id")
             #if "track_id" in ann_annotation:  # check if needed ?
